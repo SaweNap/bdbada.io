@@ -76,25 +76,25 @@
 </head>
 <body>
 
-<!-- Кнопка "Назад" с ссылкой -->
+<!-- Кнопка "Назад" -->
 <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">Назад</a>
 
-<!-- Вставляем изображение из ссылки -->
+<!-- Дополнительное изображение -->
 <img src="https://raw.githubusercontent.com/SaweNap/bdbada.io/refs/heads/main/3123.png" alt="Дополнительное изображение" class="top-image" />
 
-<!-- Тексты с разными стилями -->
+<!-- Тексты с данными пользователя -->
 <div class="nickname" id="nickname"></div>
 <div class="username" id="username"></div>
 <div class="id" id="id"></div>
 
 <script>
-  // Читаем параметры URL
+  // Получение параметров из URL
   const urlParams = new URLSearchParams(window.location.search);
   const nickname = urlParams.get('nickname') || 'Неизвестно';
   const username = urlParams.get('username') || 'Неизвестно';
   const id = urlParams.get('id') || 'Неизвестно';
 
-  // Заполняем соответствующие блоки
+  // Заполнение блоков данными
   document.getElementById('nickname').textContent = `Nickname | ${nickname}`;
   document.getElementById('username').textContent = `@username | ${username}`;
   document.getElementById('id').textContent = `ID TG | ${id}`;
