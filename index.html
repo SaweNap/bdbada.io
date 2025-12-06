@@ -15,38 +15,44 @@
     background-position: center;
     background-size: cover;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   /* Стиль для вставленного изображения */
   .top-image {
     display: block;
     margin: 0 auto 20px auto;
-    max-width: 150px;
-    width: 100%;
+    max-width: 150px; /* уменьшенная ширина */
+    width: 100%; /* адаптация по ширине */
     border-radius: 10px;
   }
   /* Тексты с разными стилями */
   .nickname {
     font-size: 24px;
-    color: #ffffff;
+    color: #ffffff; /* голубой цвет */
     text-align: center;
     margin-top: -1%;
+    margin-left: 0%;
     margin-bottom: 10px;
   }
   .username {
     font-size: 24px;
-    color: #ffffff;
+    color: #ffffff; /* голубой цвет */
     text-align: center;
     margin-top: 5%;
+    margin-left: 0%;
     margin-bottom: 10px;
   }
   .id {
     font-size: 24px;
-    color: #ffffff;
+    color: #ffffff; /* голубой цвет */
     text-align: center;
     margin-top: 5%;
+    margin-left: 0%;
     margin-bottom: 10px;
   }
-
   /* Стиль для кнопки "Назад" */
   .back-button {
     display: inline-block;
@@ -64,7 +70,6 @@
     transform: translateX(-50%);
     z-index: 1000;
   }
-
   .back-button:hover {
     background-color: #610000a4;
   }
@@ -84,18 +89,24 @@
 <div class="id" id="id"></div>
 
 <script>
-  // Получение данных пользователя внутри Telegram Web App
+  // Получение данных пользователя внутри Telegram WebApp
   if (window.Telegram && window.Telegram.WebApp) {
     const user = window.Telegram.WebApp.initDataUnsafe.user;
     document.getElementById('nickname').textContent = 'Nickname: ' + (user.first_name || 'Нет данных');
     document.getElementById('username').textContent = '@username: ' + (user.username || 'Нет данных');
     document.getElementById('id').textContent = 'ID: ' + user.id;
+    // Можно добавить аватар (если есть)
+    // user.photo_url — есть ли у объекта?
+    if (user.photo_url) {
+      // Можно вставить изображение, если нужно
+    }
   } else {
-    // Если не в Telegram WebApp, показываем сообщение или оставляем пустым
+    // Не внутри Telegram WebApp
     document.getElementById('nickname').textContent = 'Данные недоступны';
     document.getElementById('username').textContent = '';
     document.getElementById('id').textContent = '';
   }
 </script>
+
 </body>
 </html>
