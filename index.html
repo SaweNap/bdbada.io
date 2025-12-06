@@ -10,7 +10,6 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     height: 100vh; /* чтобы фон занимал всю высоту */
-    /* Фон как во втором примере: изображение, покрывающее весь экран */
     background-image: url("https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/2313.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -21,33 +20,30 @@
   .top-image {
     display: block;
     margin: 0 auto 20px auto;
-    max-width: 150px; /* уменьшенная ширина */
-    width: 100%; /* адаптация по ширине */
+    max-width: 150px;
+    width: 100%;
     border-radius: 10px;
   }
   /* Тексты с разными стилями */
   .nickname {
     font-size: 24px;
-    color: #ffffff; /* голубой цвет */
+    color: #ffffff;
     text-align: center;
     margin-top: -1%;
-    margin-left: 0%;
     margin-bottom: 10px;
   }
   .username {
     font-size: 24px;
-    color: #ffffff; /* голубой цвет */
+    color: #ffffff;
     text-align: center;
     margin-top: 5%;
-    margin-left: 0%;
     margin-bottom: 10px;
   }
   .id {
     font-size: 24px;
-    color: #ffffff; /* голубой цвет */
+    color: #ffffff;
     text-align: center;
     margin-top: 5%;
-    margin-left: 0%;
     margin-bottom: 10px;
   }
 
@@ -76,28 +72,30 @@
 </head>
 <body>
 
-<!-- Кнопка "Назад" с ссылкой -->
+<!-- Кнопка "Назад" -->
 <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">Назад</a>
 
-<!-- Вставляем изображение из ссылки -->
+<!-- Изображение -->
 <img src="https://raw.githubusercontent.com/SaweNap/bdbada.io/refs/heads/main/3123.png" alt="Дополнительное изображение" class="top-image" />
 
-<!-- Тексты с разными стилями -->
+<!-- Тексты с данными -->
 <div class="nickname" id="nickname"></div>
 <div class="username" id="username"></div>
 <div class="id" id="id"></div>
 
 <script>
-  // Читаем параметры URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const nickname = urlParams.get('nickname') || 'Неизвестно';
-  const username = urlParams.get('username') || 'Неизвестно';
-  const id = urlParams.get('id') || 'Неизвестно';
-
-  // Заполняем соответствующие блоки
-  document.getElementById('nickname').textContent = `Nickname | ${nickname}`;
-  document.getElementById('username').textContent = `@username | ${username}`;
-  document.getElementById('id').textContent = `ID TG | ${id}`;
+  // Получение данных пользователя внутри Telegram Web App
+  if (window.Telegram && window.Telegram.WebApp) {
+    const user = window.Telegram.WebApp.initDataUnsafe.user;
+    document.getElementById('nickname').textContent = 'Nickname: ' + (user.first_name || 'Нет данных');
+    document.getElementById('username').textContent = '@username: ' + (user.username || 'Нет данных');
+    document.getElementById('id').textContent = 'ID: ' + user.id;
+  } else {
+    // Если не в Telegram WebApp, показываем сообщение или оставляем пустым
+    document.getElementById('nickname').textContent = 'Данные недоступны';
+    document.getElementById('username').textContent = '';
+    document.getElementById('id').textContent = '';
+  }
 </script>
 </body>
 </html>
