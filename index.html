@@ -63,7 +63,7 @@
         color: #00ff9d;
     }
 
-    /* Блок баланса — чуть ближе к инфо */
+    /* Блок баланса без фонового цвета и блюра, с эффектом при наведении */
     .balance-container {
         padding: 20px;
         border-radius: 15px;
@@ -71,11 +71,18 @@
         max-width: 400px;
         width: 90%;
         text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        /* убрана заливка и фон */
     }
+    /* эффект при наведении */
+    .balance-container:hover {
+        transform: scale(1.05);
+    }
+
     .balance-value {
       font-size: 24px;
-        margin-bottom: 20px;
-        color: #268002ee;
+      margin-bottom: 20px;
+      color: #268002ee;
     }
 
     /* Кнопки и управление убраны */
@@ -116,9 +123,9 @@
         <div>ID TG | Загрузка...</div>
     </div>
 
-    <!-- Блок баланса -->
+    <!-- Блок баланса без фона -->
     <div class="balance-container">
-        <div class="balance-value" id="balance-display">Ваш баланс: 0₽</div>
+        <div class="balance-value" id="balance-display">💰 Ваш баланс: 0₽</div>
     </div>
 
     <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">🔙 Назад</a>
