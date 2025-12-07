@@ -1,83 +1,128 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Профиль</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            background-image: url("https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/2313.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden; /* отключение прокрутки */
-        }
-        .top-image {
-            max-width: 200px; /* увеличил размер */
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 30px; /* увеличил отступ */
-        }
-        .user-info {
-            font-size: 30px; /* увеличил размер текста */
-            color: #ffffff;
-            margin: 15px 0; /* увеличил отступы */
-        }
-        .back-button {
-            padding: 15px 30px; /* увеличил размер кнопки */
-            background-color: #610000;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 20px; /* увеличил размер шрифта */
-            cursor: pointer;
-            transition: background-color 0.3s;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .back-button:hover {
-            background-color: #610000a4;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Профиль</title>
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+        height: 100vh;
+        background-image: url("https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/2313.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden; /* отключение прокрутки */
+    }
+
+    .top-image {
+        max-width: 200px;
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        padding: 15px 25px;
+        border-radius: 15px;
+        margin: 15px 0;
+        /* Удалили фоновый цвет и блюр */
+        /* background: rgba(0, 0, 0, 0.4); */
+        max-width: 80%;
+        width: fit-content;
+        transition: transform 0.2s, background 0.2s;
+        /* Можно оставить прозрачный фон или убрать, чтобы было без фона */
+        /* background: transparent; */
+    }
+
+    .user-info:hover {
+        transform: scale(1.05);
+    }
+
+    .icon {
+        font-size: 36px;
+        margin-right: 15px;
+    }
+
+    #nickname {
+        color: #4998ff;
+    }
+
+    #username {
+        color: #00ffe6;
+    }
+
+    #id {
+        color: #00ff9d;
+    }
+
+    .back-button {
+        padding: 15px 30px;
+        background-color: #610000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .back-button:hover {
+    background-color: #610000a4;
+    transform: translateX(calc(-50% - 40px)); }
+</style>
 </head>
 <body>
     <img src="https://raw.githubusercontent.com/SaweNap/bdbada.io/refs/heads/main/3123.png" alt="Аватар" class="top-image" />
-    
-    <div class="user-info" id="nickname">Nickname | Загрузка...</div>
-    <div class="user-info" id="username">@username | Загрузка...</div>
-    <div class="user-info" id="id">ID TG | Загрузка...</div>
-    
-    <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">Назад</a>
 
-    <script>
-        // Читаем параметры URL
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Получаем данные, используя decodeURIComponent для правильного отображения кириллицы
-        const nickname = urlParams.get('nickname') || 'Неизвестно';
-        const username = urlParams.get('username') || 'Неизвестно';
-        const id = urlParams.get('id') || 'Неизвестно';
+    <div class="user-info" id="nickname">
+        <div class="icon">🕴</div>
+        <div>Nickname | Загрузка...</div>
+    </div>
+    <div class="user-info" id="username">
+        <div class="icon">👾</div>
+        <div>@username | Загрузка...</div>
+    </div>
+    <div class="user-info" id="id">
+        <div class="icon">🆔</div>
+        <div>ID TG | Загрузка...</div>
+    </div>
 
-        // Заполняем соответствующие блоки
-        document.getElementById('nickname').textContent = `Nickname | ${nickname}`;
-        document.getElementById('username').textContent = `@username | ${username}`;
-        document.getElementById('id').textContent = `ID TG | ${id}`;
+    <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">🔙 Назад</a>
 
-        // Предотвращение масштабирования и прокрутки с помощью JS
-        window.addEventListener("wheel", function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
-        window.addEventListener("keydown", function(e) { if (e.ctrlKey) { e.preventDefault(); } });
-    </script>
+<script>
+    // Читаем параметры URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Получаем данные, используя decodeURIComponent для правильного отображения кириллицы
+    const nickname = urlParams.get('nickname') || 'Неизвестно';
+    const username = urlParams.get('username') || 'Неизвестно';
+    const id = urlParams.get('id') || 'Неизвестно';
+
+    // Обновляем содержимое без фона
+    document.getElementById('nickname').innerHTML = `<div class="icon">🕴</div><div>Nickname  ${nickname}</div>`;
+    document.getElementById('username').innerHTML = `<div class="icon">👾</div><div>@username  ${username}</div>`;
+    document.getElementById('id').innerHTML = `<div class="icon">🆔</div><div>ID TG  ${id}</div>`;
+
+    // Предотвращение масштабирования и прокрутки с помощью JS
+    window.addEventListener("wheel", function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+    window.addEventListener("keydown", function(e) { if (e.ctrlKey) { e.preventDefault(); } });
+</script>
 </body>
 </html>
