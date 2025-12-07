@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Профиль</title>
+<title>Профиль с балансом денег</title>
 <style>
     body {
         margin: 0;
@@ -18,9 +18,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         text-align: center;
-        overflow: hidden; /* отключение прокрутки */
+        overflow: hidden;
     }
 
     .top-image {
@@ -30,19 +30,18 @@
         margin-bottom: 30px;
     }
 
+    /* Минимальный разрыв между элементами */
     .user-info {
       display: flex;
       align-items: center;
       font-size: 20px;
       padding: 15px 25px;
       border-radius: 15px;
-      margin: 15px 0;
+      margin: 5px 0; /* очень маленький отступ */
       max-width: 80%;
       width: fit-content;
       transition: transform 0.2s, background 0.2s;
-      position: relative; 
-      top: -40px; 
-        }           
+    }           
     .user-info:hover {
         transform: scale(1.05);
     }
@@ -64,6 +63,22 @@
         color: #00ff9d;
     }
 
+    /* Блок баланса — чуть ближе к инфо */
+    .balance-container {
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 5px; /* минимальный отступ */
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+    }
+    .balance-value {
+      font-size: 24px;
+        margin-bottom: 20px;
+        color: #268002ee;
+    }
+
+    /* Кнопки и управление убраны */
     .back-button {
         padding: 15px 30px;
         background-color: #610000;
@@ -79,10 +94,10 @@
         transform: translateX(-50%);
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-
     .back-button:hover {
-    background-color: #610000a4;
-    transform: translateX(calc(-50% - 40px)); }
+        background-color: #610000a4;
+        transform: translateX(calc(-50% - 10px));
+    }
 </style>
 </head>
 <body>
@@ -101,23 +116,31 @@
         <div>ID TG | Загрузка...</div>
     </div>
 
+    <!-- Блок баланса -->
+    <div class="balance-container">
+        <div class="balance-value" id="balance-display">Ваш баланс: 0₽</div>
+    </div>
+
     <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">🔙 Назад</a>
 
 <script>
-    // Читаем параметры URL
+    // Получение данных из URL
     const urlParams = new URLSearchParams(window.location.search);
-
-    // Получаем данные, используя decodeURIComponent для правильного отображения кириллицы
     const nickname = urlParams.get('nickname') || 'Неизвестно';
     const username = urlParams.get('username') || 'Неизвестно';
     const id = urlParams.get('id') || 'Неизвестно';
 
-    // Обновляем содержимое без фона
     document.getElementById('nickname').innerHTML = `<div class="icon">🕴</div><div>Nickname  ${nickname}</div>`;
     document.getElementById('username').innerHTML = `<div class="icon">👾</div><div>@username  ${username}</div>`;
     document.getElementById('id').innerHTML = `<div class="icon">🆔</div><div>ID TG  ${id}</div>`;
 
-    // Предотвращение масштабирования и прокрутки с помощью JS
+    // Текущий баланс
+    let balance = 0; // Можно менять в будущем
+
+    // Отображение баланса с смайликом
+    document.getElementById('balance-display').innerHTML = '💰 Ваш баланс: <span style="font-size:24px;"> ' + balance + '₽</span>';
+
+    // Запрет зума колесом и клавишей Ctrl
     window.addEventListener("wheel", function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
     window.addEventListener("keydown", function(e) { if (e.ctrlKey) { e.preventDefault(); } });
 </script>
