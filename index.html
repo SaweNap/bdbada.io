@@ -1,134 +1,78 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Казино</title>
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #2c2f33;
-    color: #fff;
-    overflow: hidden;
-    background-image: url("https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/2313.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-
-  /* Основной контейнер контента */
-  .content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2vw; /* масштабируем шрифт по ширине */
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Стиль для кнопки */
-  .image-button {
-    position: fixed; /* фиксированное позиционирование */
-    top: 10%; /* относительный отступ сверху */
-    right: 8%; /* относительный отступ справа */
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-    z-index: 1000; /* чтобы было сверху */
-  }
-
-  /* Адаптивный стиль для картинки внутри кнопки */
-  .image-button img {
-    width: 30vw; /* увеличили ширину в процентах от ширины окна */
-    max-width: 250px; /* увеличили максимум размера */
-    height: auto;
-    border-radius: 15px;
-    display: block;
-  }
-
-  /* Медиазапрос для очень маленьких экранов */
-  @media (max-width: 400px) {
-    .image-button img {
-      width: 35vw; /* чуть больше на очень маленьких экранах */
-    }
-    .content {
-      font-size: 4vw; /* масштабируем шрифт */
-    }
-  }
-
-  /* Стиль для навигационного меню */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    z-index: 999; /* поверх остального, но ниже кнопки */
-  }
-
-  /* Стиль для кнопок меню */
-  .bottom-nav button {
-    background-color: #610000;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    margin: 0 40px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s;
-  }
-
-  /* Эффект при наведении */
-  .bottom-nav button:hover {
-    background-color: #610000a4;
-  }
-</style>
-<script>
-  // Блокировка Ctrl при колесике мыши
-  window.addEventListener("wheel", function(e) {
-    if (e.ctrlKey) e.preventDefault();
-  }, { passive: false });
-  
-  // Блокировка Ctrl при нажатии клавиш
-  window.addEventListener("keydown", function(e) {
-    if (e.ctrlKey) {
-      e.preventDefault();
-    }
-  });
-
-  // Функция для открытия профиля внутри Telegram WebApp
-  function openProfile() {
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.openWebApp('https://sawenap.github.io/bdbada.io/');
-    } else {
-      // В обычном браузере — переходим по ссылке
-      window.location.href = 'https://sawenap.github.io/bdbada.io/profile.html';
-    }
-  }
-</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профиль</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-image: url("https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/2313.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .top-image {
+            max-width: 150px;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #610000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .back-button:hover {
+            background-color: #610000a4;
+        }
+    </style>
 </head>
 <body>
+    <img src="https://raw.githubusercontent.com/SaweNap/bdbada.io/refs/heads/main/3123.png" alt="Аватар" class="top-image" />
+    
+    <div class="user-info" id="nickname">Nickname | Загрузка...</div>
+    <div class="user-info" id="username">@username | Загрузка...</div>
+    <div class="user-info" id="id">ID TG | Загрузка...</div>
+    
+    <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">Назад</a>
 
-<div class="content">
-  <!-- Ваша существующая кнопка -->
-  <button class="image-button" onclick="window.location.href='https://sawenap.github.io/d6ftgb8ertgf.io/'">
-    <img src="https://raw.githubusercontent.com/SaweNap/e6r8435trb8ertr.io/refs/heads/main/BlackJack.jpg" alt="Перейти" />
-  </button>
-</div>
-<!-- Навигационное меню -->
-<div class="bottom-nav">
-  <button onclick="window.location.href='https://sawenap.github.io/e6r8435trb8ertr.io/'">Игры</button>
-  <button onclick="window.location.href='https://sawenap.github.io/bdbada.io/'">Профиль</button>
-</div>
+    <script>
+        // Читаем параметры URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Получаем данные, используя decodeURIComponent для правильного отображения кириллицы
+        const nickname = urlParams.get('nickname') || 'Неизвестно';
+        const username = urlParams.get('username') || 'Неизвестно';
+        const id = urlParams.get('id') || 'Неизвестно'; // <-- ВОТ ИСПРАВЛЕННАЯ СТРОКА
+
+        // Заполняем соответствующие блоки
+        document.getElementById('nickname').textContent = `Nickname | ${nickname}`;
+        document.getElementById('username').textContent = `@username | ${username}`;
+        document.getElementById('id').textContent = `ID TG | ${id}`;
+    </script>
 </body>
 </html>
