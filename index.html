@@ -131,25 +131,37 @@
     <a href="https://sawenap.github.io/e6r8435trb8ertr.io/" class="back-button">🔙 Назад</a>
 
 <script>
-    // Получение данных из URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const nickname = urlParams.get('nickname') || 'Неизвестно';
-    const username = urlParams.get('username') || 'Неизвестно';
-    const id = urlParams.get('id') || 'Неизвестно';
+(async () => {
+  // Получение параметров из URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const nickname = urlParams.get('nickname') || 'Неизвестно';
+  const username = urlParams.get('username') || 'Неизвестно';
+  const id = urlParams.get('id') || 'Неизвестно';
 
-    document.getElementById('nickname').innerHTML = `<div class="icon">🕴</div><div>Nickname  ${nickname}</div>`;
-    document.getElementById('username').innerHTML = `<div class="icon">👾</div><div>@username  ${username}</div>`;
-    document.getElementById('id').innerHTML = `<div class="icon">🆔</div><div>ID TG  ${id}</div>`;
+  document.getElementById('nickname').innerHTML = `<div class="icon">🕴</div><div>Nickname  ${nickname}</div>`;
+  document.getElementById('username').innerHTML = `<div class="icon">👾</div><div>@username  ${username}</div>`;
+  document.getElementById('id').innerHTML = `<div class="icon">🆔</div><div>ID TG  ${id}</div>`;
 
-    // Текущий баланс
-    let balance = 0; // Можно менять в будущем
+  // Загрузка json
+  const response = await fetch('https://raw.githubusercontent.com/SaweNap/dfjghdfifgJSON/main/users.json');
+  const users = await response.json();
 
-    // Отображение баланса с смайликом
-    document.getElementById('balance-display').innerHTML = '💰 Ваш баланс: <span style="font-size:24px;"> ' + balance + '₽</span>';
+  let userBalance = 0;
 
-    // Запрет зума колесом и клавишей Ctrl
-    window.addEventListener("wheel", function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
-    window.addEventListener("keydown", function(e) { if (e.ctrlKey) { e.preventDefault(); } });
+  // Поиск пользователя по id
+  const user = users.find(u => u.id.toString() === id.toString());
+
+  if (user && user.balance !== undefined) {
+    userBalance = user.balance;
+  }
+
+  // Обновление баланса
+  document.getElementById('balance-display').innerHTML = '💰 Ваш баланс: <span style="font-size:24px;"> ' + userBalance + '₽</span>';
+
+  // Запрет зума колесом и клавишей Ctrl
+  window.addEventListener("wheel", function(e) { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+  window.addEventListener("keydown", function(e) { if (e.ctrlKey) { e.preventDefault(); } });
+})();
 </script>
 </body>
 </html>
